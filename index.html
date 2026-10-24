@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SawitSense — Smart Sensing for Better Palm Cultivation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="logo"><span class="leaf"></span> SawitSense</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html#monitoring">Monitoring</a></li>
+      <li><a href="dashboard.html#weather">Weather</a></li>
+      <li><a href="dashboard.html#assistant">AI Assistant</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="dashboard.html" class="btn btn-primary">Open Dashboard</a>
+  </div>
+</nav>
+
+<div class="frond-divider"></div>
+
+<header class="hero container">
+  <div>
+    <span class="eyebrow">Prototype Penelitian · Data Simulasi</span>
+    <h1>Smart Monitoring for Better Palm Cultivation</h1>
+    <p class="lead">
+      SawitSense mengintegrasikan data kondisi tanah, lingkungan, cuaca, dan analisis AI
+      dalam satu dashboard untuk membantu pengambilan keputusan budidaya kelapa sawit
+      yang lebih terarah.
+    </p>
+    <div class="hero-cta">
+      <a href="dashboard.html" class="btn btn-primary">Open Dashboard</a>
+      <a href="#tentang-simulasi" class="btn btn-ghost">Tentang Data Simulasi</a>
+    </div>
+    <p class="disclaimer-note">
+      Ini adalah prototype riset. Seluruh data sensor pada dashboard merupakan
+      <strong>data simulasi</strong> - belum berasal dari perangkat IoT/ESP32 fisik yang terpasang.
+    </p>
+  </div>
+
+  <div class="hero-visual">
+    <div class="visual-header">
+      <span>LIVE PREVIEW · SIMULASI</span>
+      <span id="clock">--:--:--</span>
+    </div>
+    <div class="mini-card">
+      <span class="label">Suhu Tanah</span>
+      <span class="value">29.5<small> °C</small></span>
+    </div>
+    <div class="mini-card">
+      <span class="label">Kelembapan Tanah</span>
+      <span class="value">62<small> %</small></span>
+    </div>
+    <div class="mini-card">
+      <span class="label">pH Tanah</span>
+      <span class="value">5.8</span>
+    </div>
+    <div class="mini-card">
+      <span class="label">Curah Hujan (prakiraan)</span>
+      <span class="value">70<small> %</small></span>
+    </div>
+  </div>
+</header>
+
+<div class="frond-divider"></div>
+
+<section class="section container" id="tentang-simulasi">
+  <div class="section-head">
+    <span class="eyebrow">Bagaimana cara kerjanya</span>
+    <h2>Satu alur, dari data sampai rekomendasi</h2>
+    <p>Sistem menggabungkan tiga sumber data lalu memprosesnya menjadi rekomendasi yang mudah dipahami.</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>Data Tanah (Simulasi)</h3>
+      <p>NPK, pH, kelembapan, dan suhu tanah — direpresentasikan lewat data simulasi yang terstruktur agar mudah diganti dengan data ESP32/sensor nyata di masa depan.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Data Cuaca</h3>
+      <p>Struktur siap diintegrasikan dengan sumber resmi seperti BMKG. Untuk tahap awal digunakan data mock sebagai pengganti sementara.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI Assistant</h3>
+      <p>Menggabungkan data monitoring dan cuaca sebagai konteks, lalu memberi rekomendasi hati-hati — tanpa klaim diagnosis absolut.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frond-divider"></div>
+
+<footer id="about">
+  <div class="container">
+    SawitSense — Prototype riset monitoring budidaya kelapa sawit. Seluruh data sensor bersifat simulasi.
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  function tick(){
+    document.getElementById('clock').textContent = new Date().toLocaleTimeString('id-ID');
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>

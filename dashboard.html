@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — SawitSense</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="logo"><span class="leaf"></span> SawitSense</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#monitoring">Monitoring</a></li>
+      <li><a href="#weather">Weather</a></li>
+      <li><a href="#assistant">AI Assistant</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <a href="index.html" class="btn btn-ghost">Home</a>
+  </div>
+</nav>
+
+<div class="dash-shell">
+  <aside class="sidebar">
+    <div class="side-link active">Overview</div>
+    <div class="side-link">Kondisi Tanah</div>
+    <div class="side-link">Cuaca</div>
+    <div class="side-link">AI Assistant</div>
+    <h4>Sumber Data</h4>
+    <div class="side-link">Simulasi JSON</div>
+    <div class="side-link" style="opacity:.45">ESP32 (belum aktif)</div>
+    <div class="sim-badge">
+      ⚠ Seluruh data pada dashboard ini adalah <strong>data simulasi</strong>,
+      bukan pembacaan dari sensor fisik.
+    </div>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-top">
+      <h1>Dashboard Monitoring</h1>
+      <span class="updated">Terakhir diperbarui: <span id="last-updated">—</span> (simulasi)</span>
+    </div>
+
+    <section id="monitoring">
+      <div class="grid-cards" id="stat-cards"></div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3>Grafik Perubahan Parameter</h3>
+          <p class="panel-sub">Data simulasi berdasarkan waktu (08:00–16:00)</p>
+          <canvas id="trendChart" height="130"></canvas>
+        </div>
+        <div class="panel">
+          <h3>Komposisi NPK</h3>
+          <p class="panel-sub">mg/kg — data simulasi</p>
+          <div class="npk-bars" id="npk-bars"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Smart Recommendation</h3>
+        <p class="panel-sub">Rekomendasi dihasilkan dari kombinasi beberapa parameter, bukan satu nilai saja.</p>
+        <div id="reco-list"></div>
+      </div>
+    </section>
+
+    <section id="weather">
+      <h3 style="margin-bottom:14px;">Weather Monitoring</h3>
+      <div class="weather-hero" id="weather-hero">
+        <div>
+          <div class="desc" id="weather-desc">Memuat data cuaca…</div>
+          <div class="temp" id="weather-temp">--°C</div>
+        </div>
+        <div style="text-align:right; font-size:.85rem; color:#d7ecd8;">
+          <div>Kelembapan: <span id="weather-humidity">--</span>%</div>
+          <div>Curah hujan: <span id="weather-rain">--</span>%</div>
+        </div>
+      </div>
+      <div class="forecast-row" id="forecast-row"></div>
+      <p style="font-size:.78rem; color:var(--ink-soft); margin-top:10px;">
+        * Data cuaca saat ini adalah <strong>mock data</strong>. Ganti fungsi <code>fetchWeatherData()</code>
+        di script.js dengan pemanggilan API BMKG resmi saat sudah dikonfigurasi.
+      </p>
+    </section>
+
+    <section id="assistant" class="panel" style="margin-top:34px;">
+      <h3>SawitSense AI</h3>
+      <p class="panel-sub">Tanyakan kondisi tanaman Anda — jawaban menggunakan data dashboard di atas sebagai konteks.</p>
+      <div class="chat-shell">
+        <div class="chat-log" id="chat-log">
+          <div class="msg ai">Halo! Saya SawitSense AI. Tanyakan tentang kondisi tanah, cuaca, atau rekomendasi budidaya berdasarkan data monitoring saat ini.</div>
+        </div>
+        <div class="chat-suggestions">
+          <button class="chip-btn" data-q="Bagaimana kondisi tanaman saya?">Bagaimana kondisi tanaman saya?</button>
+          <button class="chip-btn" data-q="Apakah kondisi tanah saya bagus?">Apakah kondisi tanah saya bagus?</button>
+          <button class="chip-btn" data-q="Besok hujan, apakah memengaruhi pemupukan?">Besok hujan, apakah memengaruhi pemupukan?</button>
+        </div>
+        <form class="chat-input-row" id="chat-form">
+          <input type="text" id="chat-input" placeholder="Tulis pertanyaan Anda…" autocomplete="off">
+          <button class="btn btn-primary" type="submit">Kirim</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

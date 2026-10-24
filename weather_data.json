@@ -1,0 +1,14 @@
+{
+  "condition": "Berawan, potensi hujan sore hari",
+  "temperature": 30,
+  "humidity": 70,
+  "rain_probability": 70,
+  "forecast": [
+    { "time": "12:00", "temp": 30, "icon": "⛅" },
+    { "time": "14:00", "temp": 31, "icon": "🌤️" },
+    { "time": "16:00", "temp": 29, "icon": "🌦️" },
+    { "time": "18:00", "temp": 27, "icon": "🌧️" },
+    { "time": "20:00", "temp": 26, "icon": "🌧️" }
+  ],
+  "_note": "Data ini adalah MOCK DATA. Ganti dengan pemanggilan API resmi BMKG saat sudah dikonfigurasi (lihat fetchWeatherData() di backend/app.py)."
+}
